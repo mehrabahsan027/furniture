@@ -24,22 +24,22 @@ function NavItems({ handleMenu }) {
       },
     },
   };
-  
+
   const itemVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
   };
   return (
     <motion.ul
-    initial="hidden"
-    animate="visible"
-    variants={navVariants}
-    
-    className="flex flex-col  md:flex-row items-center text-lg md:space-x-8 gap-8 ">
+      initial="hidden"
+      animate="visible"
+      variants={navVariants}
+      className="flex flex-col  md:flex-row items-center text-lg md:space-x-8 gap-8 "
+    >
       {navItems.map((items, index) => {
         return (
           <motion.li
-          variants={itemVariants}
+            variants={itemVariants}
             whileHover={{ scale: 1.1 }}
             onClick={handleMenu}
             className="hover:text-red-500 hover:underline underline-offset-8 duration-150 font-medium"
@@ -136,7 +136,11 @@ function Navbar({ darkMode, onDark }) {
 
         <div>
           <motion.button
-            whileTap={{ scale: 0.9 }}
+            whileTap={{
+             
+              rotate: -90,
+              transition: {  duration: 0.5 },
+            }}
             className=" p-2 hover:bg-slate-50  text-lg bg-white border border-black text-black rounded-full"
             onClick={() => onDark(!darkMode)}
           >
