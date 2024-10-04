@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { delay, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 
 function Experiences() {
   const ExpVariants = {

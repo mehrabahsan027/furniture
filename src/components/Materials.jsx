@@ -33,17 +33,23 @@ function Materials() {
       {/* image section */}
       <div className="md:w-1/2 grid px-4 grid-cols-2 md:grid-cols-3 gap-10 items-center">
         <div className="space-y-5">
-          <img
+          <motion.img
+          initial={{opacity:0}}
+          whileInView={{opacity:1,transition:{delay:0.2, type:'spring'}}}
             src="https://cdn.pixabay.com/photo/2017/08/02/01/01/living-room-2569325_1280.jpg"
             className="object-cover rounded-lg"
           />
-          <img
+          <motion.img
+                initial={{opacity:0}}
+                whileInView={{opacity:1,transition:{delay:0.3, type:'spring'}}}
             src="https://cdn.pixabay.com/photo/2023/10/30/10/08/sofa-8352443_1280.jpg"
             className="object-cover rounded-lg"
           />
         </div>
         <div className="md:col-span-2">
-          <img
+          <motion.img
+               initial={{opacity:0, y:-30}}
+               whileInView={{opacity:1,y:0,transition:{delay:0.4, type:'spring'}}}
             src="https://cdn.pixabay.com/photo/2016/11/19/17/25/furniture-1840463_1280.jpg"
             className=" md:h-[540px] object-cover w-full rounded-lg"
           />
