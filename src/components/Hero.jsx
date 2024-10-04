@@ -1,6 +1,7 @@
 import React from "react";
 import banner from "../assets/banner.jpg";
 import { IoSearchOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 function Hero() {
   return (
@@ -10,9 +11,13 @@ function Hero() {
     >
       <div className="h-screen  flex flex-col gap-y-8 justify-center items-center text-center">
         {/* Tag line */}
-        <h1 className="text-3xl px-6  font-bold lg:text-6xl text-yellow-50  lg:w-9/12 leading-snug lg:leading-tight">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 ,transition:{delay:1,duration:1}}}
+          className="text-3xl px-6  font-bold lg:text-6xl text-yellow-50  lg:w-9/12 leading-snug lg:leading-tight"
+        >
           Quality Craftsmanship, Timeless Appeal.
-        </h1>
+        </motion.h1>
 
         {/* search Field */}
         <div className="relative z-40">

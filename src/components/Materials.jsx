@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
+
 
 function Materials() {
   return (

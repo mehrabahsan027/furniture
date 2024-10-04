@@ -5,6 +5,7 @@ import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { FiSun } from "react-icons/fi";
 import { FaMoon } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const navItems = [
   { path: "/", label: "Home" },
@@ -13,13 +14,35 @@ const navItems = [
 ];
 
 function NavItems({ handleMenu }) {
+  const navVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        staggerChildren: 0.3, // Adjust the time to stagger between children
+      },
+    },
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
+  };
   return (
-    <ul className="flex flex-col  md:flex-row items-center text-lg md:space-x-8 gap-8 ">
+    <motion.ul
+    initial="hidden"
+    animate="visible"
+    variants={navVariants}
+    
+    className="flex flex-col  md:flex-row items-center text-lg md:space-x-8 gap-8 ">
       {navItems.map((items, index) => {
         return (
-          <li
+          <motion.li
+          variants={itemVariants}
+            whileHover={{ scale: 1.1 }}
             onClick={handleMenu}
-            className="hover:text-red-500 hover:underline underline-offset-8 duration-300 font-medium"
+            className="hover:text-red-500 hover:underline underline-offset-8 duration-150 font-medium"
             key={index}
           >
             <NavLink
@@ -30,10 +53,10 @@ function NavItems({ handleMenu }) {
             >
               {items.label}
             </NavLink>
-          </li>
+          </motion.li>
         );
       })}
-    </ul>
+    </motion.ul>
   );
 }
 
@@ -71,9 +94,14 @@ function Navbar({ darkMode, onDark }) {
     >
       <nav className="container mx-auto flex justify-between items-center py-6 px-4 ">
         {/* Logo */}
-        <Link to="/" className=" text-2xl font-bold  ">
-          FurniNest
-        </Link>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.3 } }}
+        >
+          <Link to="/" className=" text-2xl font-bold  ">
+            FurniNest
+          </Link>
+        </motion.div>
 
         {/*Hamburger Mobile For Menu */}
         <div
@@ -106,17 +134,17 @@ function Navbar({ darkMode, onDark }) {
           <NavItems handleMenu={handleMenu} />
         </div>
 
-        <div >
-          <button
+        <div>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             className=" p-2 hover:bg-slate-50  text-lg bg-white border border-black text-black rounded-full"
             onClick={() => onDark(!darkMode)}
           >
             {darkMode ? <FiSun /> : <FaMoon />}
-          </button>
+          </motion.button>
         </div>
 
         {/* Cart Icon */}
-       
       </nav>
     </header>
   );
