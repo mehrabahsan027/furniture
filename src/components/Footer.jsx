@@ -124,7 +124,7 @@ function Footer() {
       {/* copyright */}
 
       <div className="border-t container font-poppins  mt-8 sm:pt-8 mx-auto px-4 flex flex-col gap-y-5 items-center sm:flex-row  sm:justify-around text-black dark:text-white ">
-        <p className="pt-2 sm:pt-0">Copyright&copy; {new Date().getFullYear()}</p>
+        <p className="pt-2 sm:pt-0">Copyright&copy; {new Date().getFullYear()} FurniNest</p>
         <p className="space-x-5"
         ><span>Terms & Conditions</span>
         <span>Privacy Policy</span></p>

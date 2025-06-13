@@ -4,8 +4,8 @@ import ProductsCard from "./ProductsCard";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 function Products({ headline }) {
-  const categories = ["One", "Two", "Three", "Four"];
-  const [selectedCategory, setSelectedCategory] = useState("One");
+  const categories = ["Living Room", "Bedroom", "Dining Room", "Home Office"];
+  const [selectedCategory, setSelectedCategory] = useState("Dining Room");
   const [visibleProducts, setVisibleProducts] = useState(4);
 
   const filteredProduct = products.filter(
@@ -18,45 +18,43 @@ function Products({ headline }) {
 
   return (
     <div className="mt-8">
-      <div className="mx-auto container">
+      <div className="mx-auto container px-4 sm:px-6 lg:px-8">
         <h2 className="capitalize dark:text-yellow-50 text-3xl lg:text-4xl text-center font-montserrat font-semibold">
           {headline}
         </h2>
 
-        {/* category Tab */}
-        <div className="bg-red-900  max-w-fit lg:w-1/2 mx-auto px-5 py-3 rounded-md mt-2 ">
-          <div className="text-center space-x-2 sm:space-x-5 ">
-            {categories.map((item, index) => {
-              return (
-                <button
-                  onClick={() => {
-                    setSelectedCategory(item);
-                    setVisibleProducts(4);
-                  }}
-                  key={index}
-                  className={`px-4 py-2 font-poppins  text-lg  rounded-full hover:bg-red-900 hover:text-yellow-50 hover:border transition-colors duration-300 ${
-                    selectedCategory === item
-                      ? "bg-red-900 text-yellow-50 font-bold border"
-                      : "bg-white text-black"
-                  }`}
-                >
-                  {item}
-                </button>
-              );
-            })}
+        {/* Category Tab */}
+        <div className="bg-gray-100 dark:bg-slate-700 max-w-4xl mx-auto px-4 sm:px-6 py-3 rounded-lg mt-4 sm:mt-6 shadow-sm">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            {categories.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setSelectedCategory(item);
+                  setVisibleProducts(4);
+                }}
+                className={`px-3 sm:px-5 py-2 text-sm sm:text-base font-poppins font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 ${
+                  selectedCategory === item
+                    ? "bg-cyan-600 text-white dark:bg-red-600 dark:text-yellow-50 shadow-md"
+                    : "bg-white text-gray-700 dark:bg-slate-600 dark:text-gray-200 hover:bg-cyan-100 dark:hover:bg-red-500 hover:text-cyan-800 dark:hover:text-yellow-50"
+                }`}
+                aria-label={`Filter by ${item} category`}
+                aria-pressed={selectedCategory === item}
+              >
+                {item}
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Products Grid */}
-
-        <div className="container mx-auto bg-gray-50 py-8 px-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4  justify-items-center gap-10 mt-10">
-          {filteredProduct.slice(0, visibleProducts).map((item) => {
-            return <ProductsCard key={item.id} products={item} />;
-          })}
+        <div className="container mx-auto bg-gray-50 py-8 px-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 justify-items-center gap-10 mt-10">
+          {filteredProduct.slice(0, visibleProducts).map((item) => (
+            <ProductsCard key={item.id} products={item} />
+          ))}
         </div>
 
-        {/* load more btn */}
-
+        {/* Load More Button */}
         {visibleProducts < filteredProduct.length && (
           <div className="py-5 flex justify-center">
             <button
