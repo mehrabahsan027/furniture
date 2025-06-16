@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import banner from "../assets/banner.jpg";
 import { IoSearchOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
+import { useOutletContext } from "react-router-dom";
 
 function Hero() {
+  const { searchQuery, setSearchQuery } = useOutletContext();
+
+  const [searchText ,setSearchText] = useState('')
+
+
+ const handleSubmit = ()=> {
+
+  if(searchText !== '') {
+    setSearchQuery(searchText)
+  } 
+ 
+    setSearchText('')
+  
+ 
+
+  
+ }
+
+
+
+  
+
   return (
     <section
       className="h-screen brightness-90 bg-center bg-cover relative"
@@ -22,23 +45,24 @@ function Hero() {
         {/* search Field */}
         <div className="relative z-40">
           <input
+          required
             type="search"
             placeholder="Search"
-            className="w-full sm:w-80 px-6 py-2 rounded-2xl   border outline-none bg-white/25 text-white"
+            value={searchText}
+            onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+            onChange={(e)=> setSearchText(e.target.value)}
+            className="w-full sm:w-80 px-6 py-2 rounded-2xl border outline-none bg-white/25 text-white placeholder:text-white/70"
           />
 
-          <div className="absolute cursor-pointer bg-red-900 text-white p-2 top-1 right-3 rounded-full">
+          <div onClick={handleSubmit} className="absolute cursor-pointer bg-red-900 text-white p-2 top-1 right-3 rounded-full">
             <IoSearchOutline className="text-lg font-bold" />
           </div>
         </div>
       </div>
 
       {/* bottom blur effect */}
-
       <div
-        className="absolute bottom-0  h-2/4  inset-x-0 -mb-2 bg-gradient-to-t from-yellow-50 via-transparent to-transparent blur-sm
-      
-      "
+        className="absolute bottom-0  h-2/4  inset-x-0 -mb-2 bg-gradient-to-t from-yellow-50 via-transparent to-transparent blur-sm"
       />
     </section>
   );

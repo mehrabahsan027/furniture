@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 function App() {
   const location = useLocation();
   const [darkMode, setDarkMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (darkMode) {
@@ -19,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Navbar darkMode={darkMode} onDark={setDarkMode}/>
+      <Navbar darkMode={darkMode} onDark={setDarkMode} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
 
       <main className="min-h-screen">
         <AnimatePresence mode="wait">
@@ -33,7 +34,7 @@ function App() {
               ease: "easeInOut"
             }}
           >
-            <Outlet />
+            <Outlet context={{ searchQuery, setSearchQuery }} />
           </motion.div>
         </AnimatePresence>
       </main>

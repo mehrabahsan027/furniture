@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import { products } from "../utils/products";
 import ProductsCard from "./ProductsCard";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useOutletContext } from "react-router-dom";
 
 function Products({ headline }) {
+  const { searchQuery,setSearchQuery } = useOutletContext();
   const categories = ["Living Room", "Bedroom", "Dining Room", "Home Office"];
   const [selectedCategory, setSelectedCategory] = useState("Dining Room");
   const [visibleProducts, setVisibleProducts] = useState(4);
 
   const filteredProduct = products.filter(
-    (product) => product.category === selectedCategory
+    (product) => 
+      product.category === selectedCategory && 
+      (searchQuery === "" || 
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   const loadmoreProducts = () => {
@@ -54,6 +60,15 @@ function Products({ headline }) {
           ))}
         </div>
 
+        {/* No Results Message */}
+        {filteredProduct.length === 0 && (
+          <div className="text-center py-8">
+            <p className="text-gray-600 dark:text-gray-300 text-lg">
+              No products found matching your search criteria.
+            </p>
+          </div>
+        )}
+
         {/* Load More Button */}
         {visibleProducts < filteredProduct.length && (
           <div className="py-5 flex justify-center">
@@ -68,6 +83,10 @@ function Products({ headline }) {
             </button>
           </div>
         )}
+      </div>
+
+      <div className="text-center mt-3" onClick={()=> setSearchQuery('') }>
+        <button className="px-4 py-3 bg-red-800 hover:bg-red-900 text-white transition-all duration-300">Clear Search</button>
       </div>
     </div>
   );
