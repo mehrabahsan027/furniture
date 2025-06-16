@@ -5,18 +5,21 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { useOutletContext } from "react-router-dom";
 
 function Products({ headline }) {
-  const { searchQuery,setSearchQuery } = useOutletContext();
-  const categories = ["Living Room", "Bedroom", "Dining Room", "Home Office"];
-  const [selectedCategory, setSelectedCategory] = useState("Dining Room");
+  const { searchQuery, setSearchQuery } = useOutletContext();
+  const categories = ["All", "Living Room", "Bedroom", "Dining Room", "Home Office"];
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [visibleProducts, setVisibleProducts] = useState(4);
 
-  const filteredProduct = products.filter(
-    (product) => 
-      product.category === selectedCategory && 
-      (searchQuery === "" || 
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
+  const filteredProduct = products.filter((product) => {
+    // When category is "All", ignore category filter
+    const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
+    // Apply search query filter
+    const matchesSearch =
+      searchQuery === "" ||
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const loadmoreProducts = () => {
     setVisibleProducts((prev) => prev + 4);
@@ -85,8 +88,8 @@ function Products({ headline }) {
         )}
       </div>
 
-      <div className="text-center mt-3" onClick={()=> setSearchQuery('') }>
-        <button className="px-4 py-3 bg-red-800 hover:bg-red-900 text-white transition-all duration-300">Clear Search</button>
+      <div className="text-center mt-3" onClick={() => setSearchQuery('')}>
+        <button className="px-4 py-3 bg-yellow-800 hover:bg-yellow-900 text-white transition-all duration-300">Clear Search</button>
       </div>
     </div>
   );
