@@ -17,6 +17,12 @@ function Hero() {
   } 
  
     setSearchText('')
+    
+    // Scroll to the next section (e.g., 100vh below the top)
+    window.scrollTo({
+      top: window.innerHeight, // Scrolls to the height of the viewport (end of hero section)
+      behavior: 'smooth', // Smooth scrolling
+    });
   
  
 
