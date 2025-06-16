@@ -40,7 +40,7 @@ function Experiences() {
         <motion.h3
          variants={itemVariants}
         
-         className="uppercase py-5 text-lg text-red-800 font-montserrat font-semibold">
+         className="uppercase py-5 text-lg text-red-800 font-montserrat font-semibold dark:text-yellow-600">
           Experiences
         </motion.h3>
         <motion.h4 

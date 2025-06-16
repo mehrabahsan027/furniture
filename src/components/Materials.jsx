@@ -7,7 +7,7 @@ function Materials() {
   return (
     <section className="container mx-auto -mt-16 md:mt-24 flex flex-col md:flex-row justify-center  gap-x-8">
       <div className="md:w-1/2 flex-col px-4 space-y-1 md:space-y-5">
-        <h3 className="uppercase lg:py-5 text-lg text-red-800 font-montserrat font-semibold">
+        <h3 className="uppercase lg:py-5 text-lg text-red-800 dark:text-yellow-600 font-montserrat font-semibold">
           Materials
         </h3>
         <h4 className="capitalize text-2xl dark:text-yellow-50 font-montserrat font-semibold">

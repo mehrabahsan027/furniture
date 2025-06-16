@@ -22,7 +22,7 @@ function Footer() {
 
         {/* services */}
         <div>
-          <h3 className="text-lg font-montserrat text-red-900 font-semibold">
+          <h3 className="text-lg font-montserrat text-red-900 dark:text-yellow-600 font-semibold">
             Services
           </h3>
 
@@ -54,7 +54,7 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="text-lg font-montserrat text-red-900 font-semibold">
+          <h3 className="text-lg font-montserrat text-red-900 font-semibold dark:text-yellow-600">
             Furniture
           </h3>
 
@@ -87,8 +87,8 @@ function Footer() {
         </div>
 
         <div>
-          <h3 className="text-lg font-montserrat text-red-900 font-semibold">
-            Follow Us
+          <h3 className="text-lg font-montserrat text-red-900 dark:text-yellow-600 font-semibold">
+            Follow Us 
           </h3>
 
           <ul className="mt-2 flex  space-x-4">

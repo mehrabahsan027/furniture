@@ -16,7 +16,7 @@ const Testimonial = () => {
     <section className="container mx-auto mt-10 md:mt-16 px-4 sm:px-6 lg:px-8">
       {/* Headings */}
       <div className="text-center">
-        <h2 className="uppercase text-red-900 dark:text-red-600 text-lg sm:text-xl font-montserrat font-semibold tracking-wide">
+        <h2 className="uppercase text-red-900  text-lg sm:text-xl font-montserrat font-semibold tracking-wide dark:text-yellow-600">
           Testimonials
         </h2>
         <h4 className="capitalize text-gray-900 dark:text-yellow-50 text-2xl sm:text-3xl lg:text-4xl font-montserrat font-bold mt-2 mb-6 sm:mb-8">
