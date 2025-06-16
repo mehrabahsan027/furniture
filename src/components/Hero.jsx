@@ -57,7 +57,7 @@ function Hero() {
             value={searchText}
             onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
             onChange={(e)=> setSearchText(e.target.value)}
-            className="w-full sm:w-80 px-6 py-2 rounded-2xl border outline-none bg-white/25 text-white placeholder:text-white/70"
+            className="w-full sm:w-96 px-6 py-2 rounded-2xl border outline-none bg-white/25 text-white placeholder:text-white/70"
           />
 
           <div onClick={handleSubmit} className="absolute cursor-pointer bg-red-900 text-white p-2 top-1 right-3 rounded-full">

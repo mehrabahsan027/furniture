@@ -42,13 +42,13 @@ function NavItems({ handleMenu }) {
             variants={itemVariants}
             whileHover={{ scale: 1.1 }}
             onClick={handleMenu}
-            className="hover:text-red-500 hover:underline underline-offset-8 duration-150 font-medium"
+            className="hover:text-red-900 hover:underline underline-offset-8 duration-150 font-medium"
             key={index}
           >
             <NavLink
               to={items.path}
               className={({ isActive }) =>
-                isActive ? "text-red-600 font-semibold" : ""
+                isActive ? "text-red-800 font-semibold" : ""
               }
             >
               {items.label}
