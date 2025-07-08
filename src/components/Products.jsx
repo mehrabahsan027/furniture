@@ -57,7 +57,7 @@ function Products({ headline }) {
         </div>
 
         {/* Products Grid */}
-        <div className="container mx-auto bg-gray-50 py-8 px-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 justify-items-center gap-10 mt-10">
+        <div className="container mx-auto bg-gray-50 dark:bg-gray-300 py-8 px-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 justify-items-center gap-10 mt-10">
           {filteredProduct.slice(0, visibleProducts).map((item) => (
             <ProductsCard key={item.id} products={item} />
           ))}
