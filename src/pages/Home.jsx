@@ -11,6 +11,7 @@ function Home() {
   return (
     <>
       <Hero/>
+     
       <Facilities/>
       <Products headline='Customer favorites'/>
       <Experiences/>

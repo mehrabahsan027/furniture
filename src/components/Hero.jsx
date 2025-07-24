@@ -3,6 +3,7 @@ import banner from "../assets/banner.jpg";
 import { IoSearchOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { useOutletContext } from "react-router-dom";
+import FurnitureSearch from "./FurnitureSearch";
 
 function Hero() {
   const { searchQuery, setSearchQuery } = useOutletContext();
@@ -10,24 +11,18 @@ function Hero() {
   const [searchText ,setSearchText] = useState('')
 
 
- const handleSubmit = ()=> {
+//  const handleSubmit = ()=> {
 
-  if(searchText !== '') {
-    setSearchQuery(searchText)
-  } 
+//   if(searchText !== '') {
+//     setSearchQuery(searchText)
+//   } 
  
-    setSearchText('')
-    
-    // Scroll to the next section (e.g., 100vh below the top)
-    window.scrollTo({
-      top: window.innerHeight, // Scrolls to the height of the viewport (end of hero section)
-      behavior: 'smooth', // Smooth scrolling
-    });
+//     setSearchText('')
   
  
 
   
- }
+//  }
 
 
 
@@ -49,7 +44,7 @@ function Hero() {
         </motion.h1>
 
         {/* search Field */}
-        <div className="relative z-40">
+        {/* <div className="relative z-40">
           <input
           required
             type="search"
@@ -63,7 +58,8 @@ function Hero() {
           <div onClick={handleSubmit} className="absolute cursor-pointer bg-red-900 text-white p-2 top-1 right-3 rounded-full">
             <IoSearchOutline className="text-lg font-bold" />
           </div>
-        </div>
+        </div> */}
+        <FurnitureSearch/>
       </div>
 
       {/* bottom blur effect */}
